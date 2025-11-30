@@ -1,0 +1,10 @@
+<h1>{{ article.title }}</h1>
+
+{% if article.is_premium %}
+  <p>{{ article.content_preview|linebreaks }}</p>
+  <p><em>Premium article. Get a subscription.</em></p>
+{% else %}
+  <p>{{ article.content|linebreaks }}</p>
+{% endif %}
+
+<a href="/articles/">← Back</a>

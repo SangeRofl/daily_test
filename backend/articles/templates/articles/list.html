@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Articles</title>
+  <script src="https://unpkg.com/htmx.org@2.0.1"></script>
+</head>
+<body>
+  <div id="articles-container"
+      hx-get="/articles/partial/"
+      hx-trigger="load"
+      hx-swap="innerHTML">
+  </div>
+</body>
+</html>

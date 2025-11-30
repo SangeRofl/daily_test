@@ -1,0 +1,11 @@
+{% for article in articles %}
+  <div style="margin-bottom: 1rem; padding: 1rem; border: 1px solid #ccc;">
+    <h3><a href="/articles/{{ article.id }}/">{{ article.title }}</a></h3>
+    <p>{{ article.content_preview|truncatewords:30|linebreaksbr }}</p>
+    {% if article.is_premium %}
+      <em>Premium-article</em>
+    {% endif %}
+  </div>
+{% empty %}
+  <p>No articles available.</p>
+{% endfor %}
