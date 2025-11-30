@@ -1,0 +1,30 @@
+<div id="article-detail">
+  <p>Loading...</p>
+</div>
+
+<script>
+const articleId = {{ article_id }};
+fetch(`/api/articles/${articleId}/`)
+  .then(res => res.json())
+  .then(article => {
+    const el = document.getElementById('article-detail');
+    if (article.full_content) {
+      el.innerHTML = `
+        <h1>${article.title}</h1>
+        <p>${article.full_content}</p>
+        <a href="/articles/">← Back</a>
+      `;
+    } else {
+      el.innerHTML = `
+        <h1>${article.title}</h1>
+        <p>${article.content_preview}</p>
+        <p><em>Premium article. Get a subscription.</em></p>
+        <a href="/articles/">← Back</a>
+      `;
+    }
+  })
+  .catch(err => {
+    console.error('Fail to load article:', err);
+    document.getElementById('article-detail').innerHTML = '<p>Can`t load article.</p>';
+  });
+</script>

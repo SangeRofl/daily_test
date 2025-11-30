@@ -1,0 +1,19 @@
+<h1>Articles</h1>
+<div id="articles-container">
+  <p>Loading...</p>
+</div>
+
+<script>
+fetch('/api/articles/')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('articles-container');
+    container.innerHTML = data.map(article => `
+      <div style="margin-bottom: 1rem; padding: 1rem; border: 1px solid #ccc;">
+        <h3><a href="/articles/${article.id}/">${article.title}</a></h3>
+        <p>${article.content_preview}</p>
+        ${article.is_premium ? '<em>Premium-article</em>' : ''}
+      </div>
+    `).join('');
+  });
+</script>
