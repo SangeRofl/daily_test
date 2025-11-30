@@ -1,30 +1,15 @@
-<div id="article-detail">
-  <p>Loading...</p>
-</div>
-
-<script>
-const articleId = {{ article_id }};
-fetch(`/api/articles/${articleId}/`)
-  .then(res => res.json())
-  .then(article => {
-    const el = document.getElementById('article-detail');
-    if (article.full_content) {
-      el.innerHTML = `
-        <h1>${article.title}</h1>
-        <p>${article.full_content}</p>
-        <a href="/articles/">← Back</a>
-      `;
-    } else {
-      el.innerHTML = `
-        <h1>${article.title}</h1>
-        <p>${article.content_preview}</p>
-        <p><em>Premium article. Get a subscription.</em></p>
-        <a href="/articles/">← Back</a>
-      `;
-    }
-  })
-  .catch(err => {
-    console.error('Fail to load article:', err);
-    document.getElementById('article-detail').innerHTML = '<p>Can`t load article.</p>';
-  });
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Article</title>
+  <script src="https://unpkg.com/htmx.org@2.0.1"></script>
+</head>
+<body>
+  <div id="article-detail"
+       hx-get="/articles/{{ article.id }}/partial/"
+       hx-trigger="load"
+       hx-swap="innerHTML">
+  </div>
+</body>
+</html>

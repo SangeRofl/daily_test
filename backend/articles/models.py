@@ -11,3 +11,12 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def content_preview(self):
+        return self.content[:30] + '...' if len(self.content) > 30 else self.content
+
+    def content_for_user(self, user=None):
+        # TODO: add check if user is premium
+        if self.is_premium:
+            return self.content if user and user.is_superuser else None
+        return self.content
