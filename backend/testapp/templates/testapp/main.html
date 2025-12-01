@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Тест</title>
+    <style>
+        body {
+            background-color: #B399C8; /* сиреневый цвет */
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        button {
+            width: 120px;
+            height: 120px;
+            border: none;
+            border-radius: 20px; /* круглые края */
+            background-color: #020551; /* синий цвет */
+            color: white; /* белый цвет текста */
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <form action="/rating/" method="get" style="display:inline;">
+            <button type="submit">Рейтинг</button>
+        </form>
+    </div>
+    <form action="/quiz/1/" method="get" style="display:inline;">
+        <button type="submit">Пройти тест</button>
+    </form>
+</body>
+</html>
